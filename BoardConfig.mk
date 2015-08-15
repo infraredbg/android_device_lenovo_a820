@@ -5,7 +5,7 @@
 TARGET_SPECIFIC_HEADER_PATH := device/kingzone/k1_turbo/include
 
 # Platform
-TARGET_BOARD_PLATFORM := mt6592
+TARGET_BOARD_PLATFORM := mt6589
 TARGET_NO_BOOTLOADER := true
 
 # Architecture
@@ -17,7 +17,7 @@ TARGET_CPU_SMP := true
 TARGET_CPU_VARIANT := cortex-a7
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := mt6592
+TARGET_BOOTLOADER_BOARD_NAME := mt6589
 
 TARGET_USERIMAGES_USE_EXT4:=true
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
@@ -109,8 +109,9 @@ BOARD_SEPOLICY_DIRS := \
        device/kingzone/k1_turbo/sepolicy
 
 BOARD_SEPOLICY_UNION := \
-       device.te \
        app.te \
-       system.te \
+       device.te \
        netd.te \
+       pvrsrvctl.te \
+       surfaceflinger.te \
        file_contexts
