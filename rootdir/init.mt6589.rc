@@ -1,4 +1,4 @@
-import init.mt6592.usb.rc
+import init.mt6589.usb.rc
 import init.modem.rc
 
 on init
@@ -340,7 +340,7 @@ on fs
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system
 
-    mount_all /fstab.mt6592
+    mount_all /fstab.mt6589
     #setprop ro.crypto.fuse_sdcard true
 
     write /proc/bootprof "INIT:NAND:Mount_END"
@@ -451,6 +451,13 @@ service emcsmdlogger /system/bin/emcsmdlogger
     user shell
     group system shell radio sdcard_rw inet sdcard_r media_rw ccci
     disabled
+    oneshot
+
+# SGX init
+service pvrsrvctl /system/bin/pvrsrvctl
+    class main
+    user root
+    group root
     oneshot
 
 #
