@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_k1-turbo.mk
+    $(LOCAL_DIR)/device_iq446.mk

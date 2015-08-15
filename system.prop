@@ -1,8 +1,8 @@
 #
-# system.prop for kingzone k1 turbo
+# system.prop for fly iq446
 #
 service.adb.root=1
-ro.sf.lcd_density=440
+ro.sf.lcd_density=240
 wifi.interface=wlan0
 wifi.tethering.interface=ap0
 ro.nfc.port=I2C

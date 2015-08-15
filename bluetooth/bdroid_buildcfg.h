@@ -1,6 +1,6 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Kingzone K1 Turbo"
+#define BTM_DEF_LOCAL_NAME   "Fly IQ446 Magic"
 
 #endif
