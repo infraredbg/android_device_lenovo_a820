@@ -22,10 +22,6 @@ on init
     chown system graphics /dev/ion
     chmod 0644 /dev/ion
 
-    # TODO: fix system apps run with unknown user resume 0660
-    chmod 0666 /dev/mali
-    chown system graphics /dev/mali
-
     chmod 0660 /dev/graphics/fb0
     chown system graphics /dev/graphics/fb0
 
@@ -54,15 +50,18 @@ on init
     chown system radio /dev/ttyGS3
     chmod 0660 /dev/ttyGS3
     chown system /dev/ttyGS0
-    chmod 660 /dev/ttyGS0 
+    chmod 660 /dev/ttyGS0
     chown system /dev/ttyGS1
     chmod 660 /dev/ttyGS1
 
     chown bluetooth bluetooth /dev/hid-keyboard
     chmod 0660 /dev/hid-keyboard
-    
+
     chown system media /dev/uibc
     chmod 0660 /dev/uibc
+
+    # AGPS
+    mkdir /data/agps_supl 0771 gps system
 
     # GPS
     chmod 0666 /dev/gps
@@ -75,11 +74,8 @@ on init
     chown gps gps /sys/class/gpsdrv/gps/status
 
     # Thermal
-    #change permissions on thermal devices
     chown root system /proc/mtktscpu/mtktscpu
     chmod 0660 /proc/mtktscpu/mtktscpu
-    chown root system /proc/mtktsabb/mtktsabb
-    chmod 0660 /proc/mtktsabb/mtktsabb
     chown root system /proc/mtktsbattery/mtktsbattery
     chmod 0660 /proc/mtktsbattery/mtktsbattery
     chown root system /proc/mtktspa/mtktspa
@@ -90,14 +86,31 @@ on init
     chmod 0660 /proc/driver/mtk_thermal_monitor
     chown root radio /proc/driver/mtm_scen_call
     chmod 0660 /proc/driver/mtm_scen_call
-    chown system system /proc/driver/mtk_cl_sd_pid
-    chmod 0660 /proc/driver/mtk_cl_sd_pid
+    chown system system /proc/gpufreq/gpufreq_loading_state
+    chmod 0660 /proc/gpufreq/gpufreq_loading_state
     chown root system /proc/wmt_tm/wmt_tm
     chown system system /proc/wmt_tm/tm_pid
     chown system system /proc/wmt_tm/tx_thro
     chown system system /proc/wmt_tm/wmt_val
     chown system system /proc/wmt_tm/wfd_stat
-    
+
+    # Touch Panel
+    chown root diag /sys/module/tpd_setting/parameters/tpd_calmat
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time
+    chown root diag /sys/module/tpd_setting/parameters/tpd_mode
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time0
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time1
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_spl_num
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_pressure_threshold
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_auto_time_interval
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_sample_cnt
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_asamp
+    chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
+    chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
+
+    chmod 0660 /dev/pmem_multimedia
+    chown system media /dev/pmem_multimedia
+
     # JPEG
     chmod 0444 /dev/mtk_jpeg
     chown system camera /dev/mtk_jpeg
@@ -174,7 +187,7 @@ on init
 
     # Charge
     chmod 0666 /dev/MT_pmic_adc_cali
-	
+
     # Accdet
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
 
@@ -206,14 +219,15 @@ on init
     chown system /sys/class/input/input5/wake
     chown system /sys/class/input/input3/enable
     chown system /sys/class/input/input3/wake
-    chown system /sys/class/input/input4/offsets    
+    chown system /sys/class/input/input4/offsets
+    chown system /sys/class/input/input4/dynamic_matrix
     chown system /sys/devices/platform/msensor/driver/cpsopmode
     chown system /sys/devices/platform/msensor/driver/cpsreptxy
     chown system /sys/devices/platform/msensor/driver/cpsreptz
     chown system /sys/devices/platform/gsensor/driver/cpsopmode
     chown system /sys/devices/platform/gsensor/driver/cpsrange
     chown system /sys/devices/platform/gsensor/driver/cpsbandwidth
-    mkdir	/data/data/mcube 0664 system system
+    mkdir /data/data/mcube 0664 system system
 
     chmod 0664 /sys/devices/platform/mt-pmic/pmic_access_bank0
     chmod 0664 /sys/devices/platform/mt-pmic/pmic_access_bank1
@@ -229,7 +243,7 @@ on init
     chmod 0660 /sys/power/wake_unlock
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_rate
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_slack   
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_slack
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/target_loads
@@ -245,6 +259,19 @@ on init
     chmod 0770 /sys/power/tuxonice
     chmod 0220 /sys/power/tuxonice/do_hibernate
 
+    # SPM SODI Enable
+    chown media /proc/mcdi/sodi_en
+    chmod 0664 /proc/mcdi/sodi_en
+
+    chmod 0660 /dev/graphics/fb0
+    chown system graphics /dev/graphics/fb0
+
+    chmod 0660 /dev/mtkfb_vsync
+    chown system graphics /dev/mtkfb_vsync
+
+    chmod 0660 /dev/sw_sync
+    chown system graphics /dev/sw_sync
+
     # FM Radio device node
     mknod /dev/fm     c 193 0;
     chmod 0660 /dev/fm
@@ -253,13 +280,47 @@ on init
     # TV-out
     chmod 0664 /dev/TV-out
 
-    #H DMI
-    chown meida system /dev/hdmitx
-    chmod 0664 /dev/hdmitx
+    # External Display Service
+    chmod 0664 /dev/ext_display
 
-    # JPEG
-    chmod 0444 /dev/mtk_jpeg
-    chown system camera /dev/mtk_jpeg
+    # HDMI
+    chown media system /dev/hdmitx
+    chmod 0660 /dev/hdmitx
+
+    # PMU
+    chown root radio /sys/devices/platform/mt-pmic/pmic_access
+    chmod 0664 /sys/devices/platform/mt-pmic/pmic_access
+
+    # device info /proc interface
+    mknod /dev/devmap c 196 0;
+    chmod 0440 /dev/devmap
+    chown root system /dev/devmap
+
+    # DISP
+    chmod 0440 /dev/mtk_disp
+    chown system system /dev/mtk_disp
+
+    # MDP
+    chmod 0660 /dev/mt-mdp
+    chown system media /dev/mt-mdp
+
+    # G2D
+    chmod 0660 /dev/mtkg2d
+    chown system media /dev/mtkg2d
+
+    chmod 0660 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
+    chown system media /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
+
+    # SMI
+    chmod 0660 /dev/MTK_SMI
+    chown system media /dev/MTK_SMI
+
+    # mtk_sched
+    chmod 0660 /dev/mtk_sched
+    chown system media /dev/mtk_sched
+
+    #sbchk
+    mkdir /data/sec 0750 nvram system
 
 on post-fs-data
     # Create the directories used by the Wireless subsystem
@@ -323,12 +384,15 @@ on post-fs
     chmod 0444 /system/etc/ril/oper.lis
     setprop rild.nw.operlist /system/etc/ril/oper.lis
 
+on boot
+   start drvbd
+
 service wmtLoader /system/bin/logwrapper /system/bin/wmt_loader
     user root
     group root
     class main
     oneshot
-   
+
 service conn_launcher /system/bin/logwrapper /system/bin/6620_launcher -p /system/etc/firmware/
     user system
     group system
@@ -349,10 +413,10 @@ on fs
     mkdir /data/gps_mnl 0771 gps system
 
 on property:wlan.driver.status=ok
-	write /dev/wmtWifi "1"
+    write /dev/wmtWifi "1"
 
 on property:wlan.driver.status=unloaded
-	write /dev/wmtWifi "0"
+    write /dev/wmtWifi "0"
 
 service p2p_supplicant /system/bin/wpa_supplicant -dd \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -488,7 +552,7 @@ service memsicd /system/bin/memsicd
 
 service memsicd3416x /system/bin/memsicd3416x
      disabled
-	 user system
+     user system
     group system
     class main
 
@@ -527,10 +591,10 @@ service mc6420d /system/bin/mc6420d
     user system
     group system
     class main
-    
+
 service qmc5983d /system/bin/qmc5983d
      disabled
-	 user system
+     user system
     group system
     class main
 
@@ -551,14 +615,14 @@ service geomagneticd /system/bin/geomagneticd
     user system
     group system input
     class main
-    
+
 service mc64xxd /system/bin/mc64xxd
     disabled
     user system
     group system
     class main
-    
-        
+
+
 #
 #sensor service (end)
 #
@@ -593,6 +657,12 @@ service BGW /system/xbin/BGW
     group gps system radio
     class main
     oneshot
+
+service ipod /system/bin/ipod
+    user root
+    group root
+    socket ipohctl stream 0660 root root
+    disabled
 
 # virtual sdcard daemon running as media_rw (1023)
 service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard0 /storage/sdcard0

@@ -17,6 +17,7 @@
 /dev/dkb                  0660   root       system
 /dev/seccfg               0660   root       system
 /dev/pro_info             0660	 root	    system
+/dev/logo				  0660 	 root 		system
 /dev/otp 		  0660	 root	    nvram
 /dev/nvram 		   0660	 root	    system
 /dev/misc		   0660	 root	    system

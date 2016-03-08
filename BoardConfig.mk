@@ -1,7 +1,7 @@
 # inherit from the proprietary version
--include vendor/fly/iq446/BoardConfigVendor.mk
+-include vendor/lenovo/a820/BoardConfigVendor.mk
 
-LOCAL_PATH := device/fly/iq446
+LOCAL_PATH := device/lenovo/a820
 
 # GPS
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
@@ -21,7 +21,7 @@ TARGET_CPU_VARIANT := cortex-a7
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := mt6589
 
-TARGET_USERIMAGES_USE_EXT4:=true
+TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
 # Kernel
@@ -44,7 +44,7 @@ BOARD_CUSTOM_BOOTIMG := true
 TARGET_KMODULES := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := iq446,fly89_iq446_wet_kk
+TARGET_OTA_ASSERT_DEVICE := A820
 
 COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
@@ -64,7 +64,7 @@ COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
 COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/fly/iq446/ril/
+BOARD_RIL_CLASS := ../../../device/lenovo/a820/ril/
 
 BOARD_CONNECTIVITY_VENDOR := MediaTek
 BOARD_CONNECTIVITY_MODULE := conn_soc
@@ -75,10 +75,10 @@ BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_mt66xx
-WIFI_DRIVER_FW_PATH_PARAM:="/dev/wmtWifi"
-WIFI_DRIVER_FW_PATH_STA:=STA
-WIFI_DRIVER_FW_PATH_AP:=AP
-WIFI_DRIVER_FW_PATH_P2P:=P2P
+WIFI_DRIVER_FW_PATH_PARAM := "/dev/wmtWifi"
+WIFI_DRIVER_FW_PATH_STA := STA
+WIFI_DRIVER_FW_PATH_AP := AP
+WIFI_DRIVER_FW_PATH_P2P := P2P
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -108,7 +108,7 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
 BOARD_SEPOLICY_DIRS := \
-       device/fly/iq446/sepolicy
+       device/lenovo/a820/sepolicy
 
 BOARD_SEPOLICY_UNION := \
        app.te \

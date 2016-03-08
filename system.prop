@@ -1,12 +1,10 @@
 #
-# system.prop for fly iq446
+# system.prop for lenovo a820
 #
 service.adb.root=1
 ro.sf.lcd_density=240
 wifi.interface=wlan0
 wifi.tethering.interface=ap0
-ro.nfc.port=I2C
-mtknfc.status.type=unknow
 
 persist.mtk.aee.aed=on
 persist.radio.fd.counter=15

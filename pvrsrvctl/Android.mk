@@ -3,7 +3,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := pvrsrvctl.c
-LOCAL_LDFLAGS := -L vendor/fly/iq446/proprietary/vendor/lib
+LOCAL_LDFLAGS := -L vendor/lenovo/a820/proprietary/vendor/lib
 LOCAL_LDLIBS := -lsrv_init -lsrv_um
 LOCAL_MODULE_PATH := $(TARGET_OUT)/bin/
 LOCAL_MODULE := pvrsrvctl
