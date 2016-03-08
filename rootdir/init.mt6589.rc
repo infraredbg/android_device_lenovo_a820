@@ -42,9 +42,6 @@ on init
     chown media media /dev/ccci_pcm_tx
     chmod 0660 /dev/ccci_pcm_tx
 
-    chown root system /dev/devmap
-    chmod 0440 /dev/devmap
-
     chown bluetooth radio /dev/ttyGS2
     chmod 0660 /dev/ttyGS2
     chown system radio /dev/ttyGS3
@@ -383,9 +380,6 @@ on post-fs
     chmod 0770 /system/etc/ril
     chmod 0444 /system/etc/ril/oper.lis
     setprop rild.nw.operlist /system/etc/ril/oper.lis
-
-on boot
-   start drvbd
 
 service wmtLoader /system/bin/logwrapper /system/bin/wmt_loader
     user root
