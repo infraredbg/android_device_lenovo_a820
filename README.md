@@ -14,7 +14,7 @@ Battery | 2000 mAh
 Display | 4.5" 960 x 540 px
 Camera  | 8MPx
 
-![Android One](http://news.bbcimg.co.uk/media/images/77588000/jpg/_77588715_09e78d0d-b02b-418e-8bd0-a4176c985978.jpg "All three android one devices")
+![Lenovo A820](http://cdn2.gsmarena.com/vv/pics/lenovo/lenovo-a820.jpg "Lenovo A820 device")
 
 This branch is for building CyanogenMod 11 (or Android KitKat 4.4 AOSP based roms) ROMS.
 
