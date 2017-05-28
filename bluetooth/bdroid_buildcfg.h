@@ -1,6 +1,6 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Fly IQ446 Magic"
+#define BTM_DEF_LOCAL_NAME   "Lenovo A820"
 
 #endif

@@ -1,0 +1,2 @@
+# JBCDev: Probably keep gpu-related things with contexts is good
+allow init bootanimation_exec:file execute_no_trans;

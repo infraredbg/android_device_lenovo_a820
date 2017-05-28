@@ -1,0 +1,2 @@
+# JBCDev: Probably keep gpu-related things with contexts is good
+allow servicemanager bootanimation:binder transfer;

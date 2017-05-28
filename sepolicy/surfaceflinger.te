@@ -1,13 +1,9 @@
 # surfaceflinger - display compositor service
 permissive surfaceflinger;
 
-# Set properties.
-allow surfaceflinger debug_prop:property_service set;
-
 # for debug purpose
 allow surfaceflinger self:capability { net_admin sys_nice };
 allow surfaceflinger self:netlink_socket { read bind create };
-allow surfaceflinger debug_prop:property_service set;
 allow surfaceflinger system_data_file:dir { write add_name create};
 allow surfaceflinger system_data_file:file { write create open };
 allow surfaceflinger proc:file write;
@@ -19,8 +15,12 @@ allow surfaceflinger anr_data_file:file { create write};
 allow surfaceflinger system_file:file x_file_perms;
 
 # for bootanimation
-allow surfaceflinger bootanim:dir search;
-allow surfaceflinger bootanim:file { read getattr open };
+allow surfaceflinger bootanimation:fd use;
+allow surfaceflinger bootanimation:binder transfer;
+allow surfaceflinger bootanimation:dir search;
+allow surfaceflinger bootanimation:file { read getattr open };
+allow surfaceflinger bootanimation:dir search;
+allow surfaceflinger bootanimation:file { read getattr open };
 allow surfaceflinger self:capability dac_override;
 
 # for ipo

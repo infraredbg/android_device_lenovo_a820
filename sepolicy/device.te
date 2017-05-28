@@ -3,3 +3,6 @@
 
 # Wifi device used by net daemon
 type wmtWifi_device, dev_type;
+
+# MT6589 Extras
+#type ion_device, dev_type, mlstrustedobject;

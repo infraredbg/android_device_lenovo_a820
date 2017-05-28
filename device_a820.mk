@@ -19,6 +19,11 @@ endif
 PRODUCT_PACKAGES += \
     libxlog
 
+# HWC
+PRODUCT_PACKAGES += \
+	hwcomposer \
+	gralloc_extra
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.mt6589
@@ -107,6 +112,8 @@ PRODUCT_PACKAGES += \
 # GPU
 PRODUCT_PACKAGES += \
     pvrsrvctl
+PRODUCT_PACKAGES += \
+	libcorkscrew
 
 $(call inherit-product, build/target/product/full.mk)
 

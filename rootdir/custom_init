@@ -5,7 +5,7 @@ cd /
 /sbin/busybox mkdir /tmp
 /sbin/busybox mount -t tmpfs tmpfs /tmp
 /sbin/busybox mount -t proc proc /proc
-/sbin/busybox sed -e 's/fps\=6506/fps\=6506 androidboot\.selinux\=permissive/' /proc/cmdline > /tmp/cmdline
+/sbin/busybox sed -e 's/fps\=6040/fps\=6040 androidboot\.selinux\=permissive/' /proc/cmdline > /tmp/cmdline
 /sbin/busybox mount --bind -o ro /tmp/cmdline /proc/cmdline
 
 /sbin/busybox chmod 755 /init2

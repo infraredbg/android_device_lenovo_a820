@@ -22,6 +22,13 @@ on init
     chown system graphics /dev/ion
     chmod 0644 /dev/ion
 
+# Change MMP driver permission
+    chmod 0644 /dev/mmp
+
+# change lk_env permission
+    chown root system /proc/lk_env
+    chmod 0660 /proc/lk_env
+
     chmod 0660 /dev/graphics/fb0
     chown system graphics /dev/graphics/fb0
 
@@ -260,6 +267,9 @@ on init
     chown media /proc/mcdi/sodi_en
     chmod 0664 /proc/mcdi/sodi_en
 
+    #EM eint
+    chown root diag /sys/bus/platform/drivers/eint/current_eint
+
     chmod 0660 /dev/graphics/fb0
     chown system graphics /dev/graphics/fb0
 
@@ -292,6 +302,9 @@ on init
     mknod /dev/devmap c 196 0;
     chmod 0440 /dev/devmap
     chown root system /dev/devmap
+
+    chmod 0440 /dev/mtk_almk
+    chown system /dev/mtk_almk
 
     # DISP
     chmod 0440 /dev/mtk_disp
@@ -380,12 +393,17 @@ on post-fs
     chmod 0770 /system/etc/ril
     chmod 0444 /system/etc/ril/oper.lis
     setprop rild.nw.operlist /system/etc/ril/oper.lis
+on boot
+   start drvbd
 
 service wmtLoader /system/bin/logwrapper /system/bin/wmt_loader
     user root
     group root
     class main
     oneshot
+
+# SGX init
+#service pvrsrvctl /system/vendor/bin/pvrsrvctl --no-module --start
 
 service conn_launcher /system/bin/logwrapper /system/bin/6620_launcher -p /system/etc/firmware/
     user system

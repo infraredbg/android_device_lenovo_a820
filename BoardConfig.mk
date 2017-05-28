@@ -3,12 +3,17 @@
 
 LOCAL_PATH := device/lenovo/a820
 
+# TARGET_GCC_VERSION_EXP := 4.9
+TARGET_GCC_VERSION_EXP := 4.8
+
 # GPS
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Platform
+ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_BOARD_PLATFORM := mt6589
 TARGET_NO_BOOTLOADER := true
+TARGET_32_BIT_SURFACEFLINGER := true
 
 # Architecture
 TARGET_ARCH := arm
@@ -25,7 +30,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
 # Kernel
-BOARD_KERNEL_CMDLINE :=
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 
@@ -48,6 +53,8 @@ TARGET_KMODULES := true
 # Assert
 TARGET_OTA_ASSERT_DEVICE := A820
 
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
@@ -58,12 +65,19 @@ TARGET_CPU_MEMCPY_OPT_DISABLE := true
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
+#BOARD_EGL_NEEDS_FNW := true
 
 # MTK Hardware
 BOARD_HAS_MTK_HARDWARE := true
 MTK_HARDWARE := true
-COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
+BOARD_USES_LEGACY_MTK_AV_BLOB := true
+COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL -DREFBASE_JB_MR1_COMPAT_SYMBOLS
 COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
+
+TARGET_32_BIT_SURFACEFLINGER := true
+
+# Audio
+BOARD_USES_MTK_AUDIO := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/lenovo/a820/ril/
@@ -114,9 +128,16 @@ BOARD_SEPOLICY_DIRS := \
 
 BOARD_SEPOLICY_UNION := \
        app.te \
+       bootanimation.te \
        device.te \
+       domain.te \
+       file_contexts \
+       init.te \
+       mediaserver.te \
        netd.te \
        pvrsrvctl.te \
+       servicemanager.te \
        surfaceflinger.te \
        system.te \
-       file_contexts
+       system_server.te \
+       untrusted_app.te

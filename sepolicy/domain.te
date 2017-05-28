@@ -1,0 +1,2 @@
+# JBCDev: Allow ion_device to be used
+allow domain ion_device:chr_file rw_file_perms;

@@ -1,0 +1,5 @@
+# JBCDev: Probably keep gpu-related things with contexts is good
+allow system_server bootanimation:dir search;
+allow system_server bootanimation:file { read open };
+allow system_server bootanimation:file getattr;
+allow system_server bootanimation:dir { read open };

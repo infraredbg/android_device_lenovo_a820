@@ -1,0 +1,2 @@
+# JBCDev: Probably keep gpu-related things with contexts is good
+allow untrusted_app bootanimation_exec:file getattr;
